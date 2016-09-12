@@ -1,9 +1,12 @@
-<main>
-  <h1 class="title">Hello from Angular !</h1>
+<div class="page-wrap">
 
-  <!-- Images (and assets) are parsed and loaded from within the public directory -->
-  <img src="/img/logo.png">
-</main>
-<footer>
-  <a ng-href="{{app.url}}">Webpack Angular Starter</a>
+  <app-header>
+    <h1>Hello</h1>
+  </app-header>
+  <main>
+    <ui-view></ui-view>
+  </main>
+</div>
+<footer class="sticky">
+  <a ng-href="{{ url }}">webpack</a>
 </footer>

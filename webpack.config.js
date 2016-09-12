@@ -6,6 +6,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 /**
  * Env
@@ -101,6 +102,13 @@ module.exports = function makeWebpackConfig () {
       // Reference: https://github.com/webpack/style-loader
       // Use style-loader in development.
       loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
+    },{
+      test: /\.less$/,
+      loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!less-loader?sourceMap'
+                    // activate source maps via loader query
+                    // 'css?sourceMap!' +
+                    // 'less?sourceMap'
+                )
     }, {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
@@ -165,7 +173,8 @@ module.exports = function makeWebpackConfig () {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin('[name].[hash].css', {disable: !isProd})
+      new ExtractTextPlugin('[name].[hash].css', {disable: !isProd}),
+      new WebpackNotifierPlugin()
     )
   }
 
