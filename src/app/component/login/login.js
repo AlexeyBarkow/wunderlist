@@ -21,8 +21,14 @@ angular.module(MODULE_NAME, [])
         username: username,
         password: password
       }).then(function (res, status) {
-        auth.user = res.data;
-        return auth.user;
+        console.log(res)
+          auth.user = res.data;
+          return auth.user;
+      }).catch(e => {
+        // console.log(e)
+        return {
+          message: 'status: ' + e.status
+        }
       });
     }
     auth.logout = function () {
@@ -34,14 +40,25 @@ angular.module(MODULE_NAME, [])
   })
   .value('AUTH_ENDPOINT', '/login')
   .value('LOGOUT_ENDPOINT', '/logout')
-  .directive('login', ['authService', function (authService) {
+  .directive('login', ['authService', '$state', function (authService, $state) {
     return {
       scope: {},
       restrict: 'AEC',
       replace: true,
       template: require('./login.template.html'),
       link: function (scope, elem, attrs) {
-        scope.login = authService.login;
+        scope.invalidLogin = false;
+        scope.login = function () {
+          authService.login(arguments[0], arguments[1]).then(res => {
+            console.log(res)
+            if (!res.message) {
+              $state.go('/', { location: 'replace' });
+              scope.invalidLogin = false;
+            } else {
+              scope.invalidLogin = true;
+            }
+          });
+        }
         scope.buttonText = "login"
 
       }
