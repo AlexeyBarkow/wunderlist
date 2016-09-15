@@ -6,6 +6,9 @@ export default ['$httpBackend', ServerDataModel, function mockBackend($httpBacke
   });
   $httpBackend.whenPOST('/login').respond(function (method, url, data) {
     console.log(method, url, data, 'error')
-    return [401, {}, {}]
+    return [401, {}, {}];
   });
+  $httpBackend.whenPOST('/logout').respond(function (method, url, data) {
+    return [200, {}, {}];
+  })
 }];

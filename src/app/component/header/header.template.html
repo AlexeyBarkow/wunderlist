@@ -1,4 +1,5 @@
 <header class="clearfix">
-  <h1 class="float-left">Hello</h1>
-  <button ui-sref="login" class="float-right">login</button>
+  <h1 class="float-left"><a ui-sref="index">Hello</a></h1>
+  <button ui-sref="login" class="float-right" ng-show="!user">login</button>
+  <button ng-click="logout()" class="float-right" ng-show="!!user">logout</button>
 </header>

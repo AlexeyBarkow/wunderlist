@@ -1,11 +1,11 @@
 <div class="form-wrap">
   <h1 class="text-center login-title">Login</h1>
   <form name="signup" class="signup" ng-submit="login(credentials.username, credentials.password)" novalidate>
-    <input type="text" class="form-control" placeholder="Username" ng-model="credentials.username" ng-required="true">
-    <input type="password" class="form-control" placeholder="Password" ng-model="credentials.password" ng-required="true">
+    <input type="text" name="username" class="form-control" placeholder="Username" ng-model="credentials.username" ng-required="true">
+    <input type="password" name="password" class="form-control" placeholder="Password" ng-model="credentials.password" ng-required="true">
     <button class="btn btn-lg btn-primary btn-block" type="submit">{{ buttonText }}</button>
     <div>
-        <span ng-show="invalidLogin" class="alert alert-danger">Invalid username/password</span>
+        <span ng-show="signup.password.$dirty && invalidLogin" class="alert alert-danger">Invalid username/password</span>
     </div>
   </form>
 </div>

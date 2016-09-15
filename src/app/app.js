@@ -2,6 +2,9 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import routing from './app.router.js';
 import header from './component/header/header.js';
+import defaultMenu from './component/default-menu/default-menu.js';
+import notFound from './component/not-found/not-found.js'
+import footer from './component/footer/footer.js';
 import '../style/less-app.less';
 
 import ngMockE2E from 'angular-mocks';
@@ -25,17 +28,24 @@ import ngMockE2E from 'angular-mocks';
 
 const MODULE_NAME = 'app';
 
-let app = angular.module(MODULE_NAME, [uirouter, 'ngMockE2E', header])
+let app = angular.module(MODULE_NAME, [uirouter, 'ngMockE2E', header, footer, defaultMenu, notFound])
   .config(routing)
   .directive('app', function () {
     return {
+      replace: true,
       template: require('./app.html'),
       controller: 'AppCtrl',
       controllerAs: 'app'
     }
   })
-  .controller('AppCtrl', ['$scope', '$http', ($scope, $http) => {
-    $scope.url = 'https://github.com/preboot/angular-webpack';
+  .controller('AppCtrl', ['$scope', '$http', 'authService', ($scope, $http, authService) => {
+    // $scope.whoIsLogged = authService.user;
+    // console.log(authService.user)
+    // $scope.$watch(authService.user, function (newVal, old) {
+    //   console.log(newVal, old)
+    //   $scope.whoIsLogged = newVal;
+    // }, true);
+    // $scope.url = 'https://github.com/preboot/angular-webpack';
     // $scope.post = function () {
     //   $http.post('/login', {
     //     username: 'admin',

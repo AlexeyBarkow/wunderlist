@@ -15,7 +15,9 @@ angular.module(MODULE_NAME, [])
   //     });
   // })
   .factory('authService', function (AUTH_ENDPOINT, LOGOUT_ENDPOINT, $http) {
-    var auth = {};
+    var auth = {
+      user: 'yourmom'
+    };
     auth.login = function (username, password) {
       return $http.post(AUTH_ENDPOINT, {
         username: username,
@@ -48,18 +50,18 @@ angular.module(MODULE_NAME, [])
       template: require('./login.template.html'),
       link: function (scope, elem, attrs) {
         scope.invalidLogin = false;
-        scope.login = function () {
-          authService.login(arguments[0], arguments[1]).then(res => {
-            console.log(res)
+        scope.login = function (username, password) {
+          authService.login(username, password).then(res => {
             if (!res.message) {
-              $state.go('/', { location: 'replace' });
+              $state.go('index', { location: 'replace' });
               scope.invalidLogin = false;
             } else {
               scope.invalidLogin = true;
             }
           });
         }
-        scope.buttonText = "login"
+        //I really don't know for what purpose I've added that
+        scope.buttonText = "login";
 
       }
     }
