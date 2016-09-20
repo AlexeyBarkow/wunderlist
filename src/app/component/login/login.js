@@ -15,8 +15,11 @@ angular.module(MODULE_NAME, [])
   //     });
   // })
   .factory('authService', function (AUTH_ENDPOINT, LOGOUT_ENDPOINT, $http) {
-    var auth = {
-      user: 'yourmom'
+    let user = 'yourmom'
+    let auth = {
+      getUser: () => {
+        return user
+      }
     };
     auth.login = function (username, password) {
       return $http.post(AUTH_ENDPOINT, {
@@ -24,18 +27,18 @@ angular.module(MODULE_NAME, [])
         password: password
       }).then(function (res, status) {
         console.log(res)
-          auth.user = res.data;
-          return auth.user;
+          user = res.data;
+          return user;
       }).catch(e => {
         // console.log(e)
         return {
           message: 'status: ' + e.status
-        }
+        };
       });
     }
     auth.logout = function () {
       return $http.post(LOGOUT_ENDPOINT).then(function (res) {
-        auth.user = undefined;
+        user = undefined;
       });
     }
     return auth;

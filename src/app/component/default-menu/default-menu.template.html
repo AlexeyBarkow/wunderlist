@@ -1,8 +1,8 @@
-<main >
+<main>
   <div ng-show="!user">
     Please, <a ui-sref="login">log in</a> or <a ui-sref="register">register</a> to continue
   </div>
-  <div ng-show="user">
-    Coming soon...
+  <div ng-show="!!user">
+    <list-view passed-params="{{queryParams}}"></list-view>
   </div>
 </main>

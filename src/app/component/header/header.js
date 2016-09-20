@@ -11,14 +11,15 @@ angular.module(MODULE_NAME, [login])
       scope: {},
       template: require('./header.template.html'),
       link: function (scope) {
-        console.log(scope)
+        // console.log(scope)
         // scope.isLoggedIn = !!auth.user;
         scope.logout = auth.logout;
-        scope.user = auth.user;
+        scope.user = auth.getUser();
         scope.$watch(function () {
-          return auth.user
+          return auth.getUser();
         }, function (newVal){
-          console.log(newVal)
+          // console.log(newVal)
+          scope.user = auth.getUser();
         });
         // scope.user
       }
