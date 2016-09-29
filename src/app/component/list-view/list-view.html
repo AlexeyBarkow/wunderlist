@@ -1,8 +1,14 @@
 <div class="list-wrap">
-  <ul>
+  <div class="setting">
+    <true-checkbox checkbox-state="shouldShowFinishedTasks">Show finished tasks</true-checkbox>
+  </div>
+  <ul class="to-do-list">
     <li ng-repeat="elem in taskList">
       <list-item item-attr="elem"></list-item>
     </li>
+    <li class="clearfix">
+      <a ng-class="{disabled: prevStart < 0}" ui-sref="index({start: prevStart, size: PLC})" class="float-left nav-button left">prev</a><a ng-class="{disabled: nextStart >= totalSize}" ui-sref="index({start: nextStart, size: PLC})" class="float-right nav-button right">next</a>
+    </li>
   </ul>
-
+  <button class="green standart-button">Add new task</button>
 </div>

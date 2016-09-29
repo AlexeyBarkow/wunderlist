@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import routing from './app.router.js';
+import appState from './app-state.js';
 import header from './component/header/header.js';
 import defaultMenu from './component/default-menu/default-menu.js';
 import notFound from './component/not-found/not-found.js'
@@ -8,6 +9,7 @@ import footer from './component/footer/footer.js';
 import '../style/less-app.less';
 
 import ngMockE2E from 'angular-mocks';
+import ngMaterial from 'angular-material';
 
 //for development mode only
 // import mockBackend from './mocks/app-mockbackend.js';
@@ -28,7 +30,7 @@ import ngMockE2E from 'angular-mocks';
 
 const MODULE_NAME = 'app';
 
-let app = angular.module(MODULE_NAME, [uirouter, 'ngMockE2E', header, footer, defaultMenu, notFound])
+let app = angular.module(MODULE_NAME, [uirouter, 'ngMockE2E', 'ngMaterial', header, footer, defaultMenu, notFound, appState])
   .config(routing)
   .directive('app', function () {
     return {
@@ -53,6 +55,7 @@ let app = angular.module(MODULE_NAME, [uirouter, 'ngMockE2E', header, footer, de
     //   })
     // }
   }])
+
 //for development mode only
 
 if (process.env.npm_lifecycle_event !== 'build') {

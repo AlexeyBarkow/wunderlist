@@ -1,8 +1,9 @@
 import angular from 'angular';
+import trueCheckbox from '../true-checkbox/true-checkbox.js';
 import './list-item.less';
 const MODULE_NAME = 'listItem';
 
-angular.module(MODULE_NAME, [])
+angular.module(MODULE_NAME, [trueCheckbox])
   .directive('listItem', [function () {
     return {
       restrict: 'E',
@@ -12,7 +13,7 @@ angular.module(MODULE_NAME, [])
       // replace: true,
       template: require('./list-item.html'),
       link: function (scope) {
-        console.log(scope);
+        // console.log(scope);
       }
     }
   }]);

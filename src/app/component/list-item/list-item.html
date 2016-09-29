@@ -1,4 +1,6 @@
-<div class="list-item">
+<div class="list-item" ng-class="{completed: !!listItem.completed}">
+  <!-- <label class="true-checkbox float-left"><input type="checkbox" ng-model="listItem.completed"><div class="square"><span>&#10004;</span></div></label> -->
+  <true-checkbox class="float-left" checkbox-state="listItem.completed"></true-checkbox>
   <h4>{{ listItem.title }}</h4>
   <p>{{ listItem.text }}</p>
   <p>{{ listItem.date | date }}</p>

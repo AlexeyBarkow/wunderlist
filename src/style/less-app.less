@@ -1,14 +1,22 @@
+
+@bg-color: #0147A7;
+
 * {
+  // margin: 0;
+  box-sizing: border-box;
   margin: 0;
 }
 
-html, body, .top-container {
+// body {
+//   min-height: 100%;
+// }
+html, .top-container, body {
   height: 100%;
 }
-
 .page-wrap {
   min-height: 100%;
   margin-bottom: -40px;
+  background-color: @bg-color;
 }
 
 .page-wrap::after {
@@ -23,8 +31,7 @@ html, body, .top-container {
 }
 
 
-body {
-  background: #0147A7;
+.top-container {
   color: #fff;
 
 }
@@ -33,11 +40,17 @@ a {
   color: #03A9F4;
 }
 
+.disabled {
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+}
+
 main {
-  padding: 1em;
+  padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  margin-top: 50px;
+  // margin-top: 50px;
   display: block;
 }
 
@@ -45,6 +58,7 @@ footer {
   text-align: center;
   font-size: 0.8em;
 }
+
 
 
 .float-left {
