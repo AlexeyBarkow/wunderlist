@@ -31,6 +31,11 @@ module.exports = function makeWebpackConfig () {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? {} : {
+    vendors: [
+     'angular-material',
+     'angular-material/angular-material.css',
+    //  './src/app/animate.css'
+   ],
     app: './src/app/app.js'
   };
 
@@ -92,10 +97,10 @@ module.exports = function makeWebpackConfig () {
       test: /\.less$/,
       loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!less-loader?sourceMap')
     },
-    // {
-    //   test: /\.css$/,
-    //   loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
-    // },
+    {
+      test: /\.css$/,
+      loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
+    },
      {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader

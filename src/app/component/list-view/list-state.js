@@ -1,13 +1,10 @@
 import angular from 'angular';
-const MODULE_NAME = 'app.state.provider'
+const MODULE_NAME = 'list.state.service'
 angular.module(MODULE_NAME, [])
-  .provider('appState', [function () {
+  .factory('listState', [function () {
     return {
       state: {
         shouldShowFinishedTasks: false
-      },
-      $get: function () {
-        return this.state
       }
     }
   }]);

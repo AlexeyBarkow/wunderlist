@@ -1,0 +1,28 @@
+.my-dialog-mixin(@width, @height) {
+  display: block;
+  width: @width;
+  // height: @height;
+  // z-index: 5;
+  // background-color: red;
+  input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+  p, .popup-form-head {
+    padding: 10px;
+    // padding-bottom: 5px;
+  }
+  h2 {
+    margin-top: 8px;
+    margin-left: 15px;
+  }
+  textarea {
+    resize: none;
+  }
+}
+md-dialog > md-dialog {
+  max-width: 100%;
+}
+
+.my-new-task-dialog {
+  .my-dialog-mixin(400px, 400px);
+}

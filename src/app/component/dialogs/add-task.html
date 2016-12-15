@@ -1,0 +1,36 @@
+<md-dialog aria-label="Adding new task...">
+  <form name="newTaskForm" novalidate class="my-new-task-dialog">
+    <md-toolbar>
+      <div class="popup-form-head">
+        <md-button ng-click="cancel()" class="my-cross-css-icon float-right" aria-label="close">
+        </md-button>
+        <h2>Add new task</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <p>
+        <label>
+          <span>Title</span>
+          <input ng-model="title" type="text" name="title" placeholder="Title" required>
+        </label>
+      </p>
+      <p>
+        <label>
+          <span>Date</span>
+          <md-datepicker ng-model="taskDate" md-placeholder="Date" required></md-datepicker>
+        </label>
+      </p>
+      <p>
+        <label>
+          <span>Text</span>
+          <textarea ng-model="text" name="text" rows="8" cols="40" placeholder="Text"></textarea>
+        </label>
+
+      </p>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <md-button type="submit" ng-click="addTask()">Add task</md-button>
+      <md-button ng-click="hide()">Cancel</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

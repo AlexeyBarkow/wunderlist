@@ -1,5 +1,6 @@
 <div class="list-wrap">
   <div class="setting">
+    <!-- <div class="my-cross-css-icon"></div> -->
     <true-checkbox checkbox-state="shouldShowFinishedTasks">Show finished tasks</true-checkbox>
   </div>
   <ul class="to-do-list">
@@ -10,5 +11,5 @@
       <a ng-class="{disabled: prevStart < 0}" ui-sref="index({start: prevStart, size: PLC})" class="float-left nav-button left">prev</a><a ng-class="{disabled: nextStart >= totalSize}" ui-sref="index({start: nextStart, size: PLC})" class="float-right nav-button right">next</a>
     </li>
   </ul>
-  <button class="green standart-button">Add new task</button>
+  <button class="green standart-button" ng-click="showAddNewTaskDialog()">Add new task</button>
 </div>

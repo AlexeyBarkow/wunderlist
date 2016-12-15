@@ -1,8 +1,8 @@
 
-export default ['$stateProvider', '$urlRouterProvider', 'appStateProvider', function ($stateProvider, $urlRouterProvider, appState){
-  appState.state = {
-    shouldShowFinishedTasks: false //i will place something else here later
-  };
+export default ['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
+  // appState.state = {
+  //   shouldShowFinishedTasks: false //i will place something else here later
+  // };
   $urlRouterProvider
     .otherwise('/otherwise');
   $stateProvider

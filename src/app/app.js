@@ -1,7 +1,6 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import routing from './app.router.js';
-import appState from './app-state.js';
 import header from './component/header/header.js';
 import defaultMenu from './component/default-menu/default-menu.js';
 import notFound from './component/not-found/not-found.js'
@@ -11,26 +10,10 @@ import '../style/less-app.less';
 import ngMockE2E from 'angular-mocks';
 import ngMaterial from 'angular-material';
 
-//for development mode only
-// import mockBackend from './mocks/app-mockbackend.js';
-
-// let app = () => {
-//   return {
-//     template: require('./app.html'),
-//     controller: 'AppCtrl',
-//     controllerAs: 'app'
-//   }
-// };
-
-// class AppCtrl {
-//   constructor() {
-//     this.url = 'https://github.com/preboot/angular-webpack';
-//   }
-// }
 
 const MODULE_NAME = 'app';
-
-let app = angular.module(MODULE_NAME, [uirouter, 'ngMockE2E', 'ngMaterial', header, footer, defaultMenu, notFound, appState])
+// console.log('ng-m', ngMaterial, ngMockE2E)
+let app = angular.module(MODULE_NAME, [uirouter, 'ngMockE2E', header, footer, defaultMenu, notFound])
   .config(routing)
   .directive('app', function () {
     return {
@@ -41,19 +24,7 @@ let app = angular.module(MODULE_NAME, [uirouter, 'ngMockE2E', 'ngMaterial', head
     }
   })
   .controller('AppCtrl', ['$scope', '$http', 'authService', ($scope, $http, authService) => {
-    // $scope.whoIsLogged = authService.user;
-    // console.log(authService.user)
-    // $scope.$watch(authService.user, function (newVal, old) {
-    //   console.log(newVal, old)
-    //   $scope.whoIsLogged = newVal;
-    // }, true);
-    // $scope.url = 'https://github.com/preboot/angular-webpack';
-    // $scope.post = function () {
-    //   $http.post('/login', {
-    //     username: 'admin',
-    //     password: '1243'
-    //   })
-    // }
+
   }])
 
 //for development mode only
